@@ -7,7 +7,6 @@ class Quiz:
     """Manages the quiz flow, question progression, and score tracking.
 
     Attributes:
-        total_questions: Total number of questions in the quiz (10).
         questions: Ordered list of :class:`MathQuestion` instances.
         current_index: Index of the question currently being asked.
         correct_count: Number of correctly answered questions so far.
@@ -18,8 +17,7 @@ class Quiz:
 
     def __init__(self) -> None:
         """Initialise a new Quiz with 10 progressively harder questions."""
-        self.total_questions = self.TOTAL_QUESTIONS
-        self.questions = [MathQuestion(i) for i in range(self.total_questions)]
+        self.questions = [MathQuestion(i) for i in range(self.TOTAL_QUESTIONS)]
         self.current_index = 0
         self.correct_count = 0
         self.incorrect_count = 0
@@ -30,7 +28,7 @@ class Quiz:
 
     def has_next_question(self) -> bool:
         """Return ``True`` if there are more questions to answer."""
-        return self.current_index < self.total_questions
+        return self.current_index < self.TOTAL_QUESTIONS
 
     def get_current_question(self) -> MathQuestion:
         """Return the current :class:`MathQuestion`.
@@ -85,12 +83,12 @@ class Quiz:
             ``percentage``.
         """
         percentage = (
-            (self.correct_count / self.total_questions) * 100
-            if self.total_questions > 0
+            (self.correct_count / self.TOTAL_QUESTIONS) * 100
+            if self.TOTAL_QUESTIONS > 0
             else 0.0
         )
         return {
-            'total': self.total_questions,
+            'total': self.TOTAL_QUESTIONS,
             'correct': self.correct_count,
             'incorrect': self.incorrect_count,
             'percentage': round(percentage, 1),

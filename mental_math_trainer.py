@@ -22,6 +22,8 @@ class MentalMathTrainer:
       display, answer input, progress indicator, and results screen.
     """
 
+    FEEDBACK_DELAY_MS = 900  # milliseconds before advancing to the next screen
+
     # ------------------------------------------------------------------
     # Console mode
     # ------------------------------------------------------------------
@@ -38,7 +40,7 @@ class MentalMathTrainer:
         while quiz.has_next_question():
             question = quiz.get_current_question()
             q_num = quiz.current_index + 1
-            print(f"Question {q_num}/{quiz.total_questions}: "
+            print(f"Question {q_num}/{quiz.TOTAL_QUESTIONS}: "
                   f"{question.get_question_text()}")
 
             user_answer = self._get_int_input("Your answer: ")
@@ -170,7 +172,7 @@ class MentalMathTrainer:
         # Progress label
         tk.Label(
             self._root,
-            text=f"Question {q_num} of {quiz.total_questions}",
+            text=f"Question {q_num} of {quiz.TOTAL_QUESTIONS}",
             font=("Helvetica", 11),
             bg="#f0f4f8",
             fg="#718096",
@@ -182,7 +184,7 @@ class MentalMathTrainer:
             highlightthickness=0,
         )
         progress_canvas.pack()
-        fill_width = int(400 * (q_num - 1) / quiz.total_questions)
+        fill_width = int(400 * q_num / quiz.TOTAL_QUESTIONS)
         progress_canvas.create_rectangle(
             0, 0, fill_width, 16, fill="#4299e1", outline=""
         )
@@ -262,7 +264,7 @@ class MentalMathTrainer:
             self._feedback_label.config(fg="#c53030")
 
         # Pause briefly then move on
-        self._root.after(900, self._advance_gui)
+        self._root.after(self.FEEDBACK_DELAY_MS, self._advance_gui)
 
     def _advance_gui(self) -> None:
         """Move to the next question or show the results screen."""
