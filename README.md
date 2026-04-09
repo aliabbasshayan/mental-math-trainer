@@ -1,8 +1,8 @@
 # Mental Math Trainer
 
-A Python OOP-based mental math trainer with both a console interface and a
-Tkinter GUI.  Practice addition, subtraction, and multiplication with
-progressively harder questions and instant feedback.
+A Python OOP-based console mental math trainer.  Practice addition,
+subtraction, and multiplication with progressively harder questions and instant
+feedback.
 
 ---
 
@@ -14,8 +14,6 @@ progressively harder questions and instant feedback.
 - **Immediate feedback** – correct/wrong shown after every answer; wrong
   answers reveal the correct result
 - **Final score summary** – total, correct, incorrect, and percentage
-- **Dual interface** – console fallback and a Tkinter GUI with a welcome
-  screen, progress bar, and results screen
 - **Error handling** – invalid (non-integer) inputs are caught gracefully
 - **PEP 8 compliant** with full docstrings
 
@@ -25,10 +23,10 @@ progressively harder questions and instant feedback.
 
 ```
 mental-math-trainer/
-├── main.py                 # Entry point – mode-selection menu
+├── main.py                 # Entry point
 ├── math_question.py        # MathQuestion class
 ├── quiz.py                 # Quiz class
-├── mental_math_trainer.py  # MentalMathTrainer class (console + GUI)
+├── mental_math_trainer.py  # MentalMathTrainer class (console)
 └── README.md
 ```
 
@@ -37,7 +35,6 @@ mental-math-trainer/
 ## Requirements
 
 - Python 3.8 or newer
-- `tkinter` (bundled with the standard CPython distribution)
 
 No third-party packages are required.
 
@@ -48,22 +45,6 @@ No third-party packages are required.
 ```bash
 python main.py
 ```
-
-You will be presented with a menu:
-
-```
-==================================================
-       Mental Math Trainer
-==================================================
-Choose a mode:
-  1. Console mode
-  2. GUI mode (Tkinter)
-  q. Quit
---------------------------------------------------
-Enter your choice (1/2/q):
-```
-
-### Console mode
 
 Answers are entered at the terminal prompt.  Feedback is printed immediately
 and a summary is shown at the end.
@@ -86,16 +67,6 @@ Wrong answers   : 2
 Score           : 80.0%
 ==================================================
 ```
-
-### GUI mode
-
-A Tkinter window opens with:
-
-1. **Welcome screen** – brief description and *Start Quiz* button
-2. **Question screen** – progress bar, question text, answer entry, *Submit*
-   button, and inline feedback
-3. **Results screen** – full score summary with *Play Again* and *Quit*
-   buttons
 
 ---
 
@@ -131,7 +102,6 @@ A Tkinter window opens with:
 | Method          | Description                              |
 |-----------------|------------------------------------------|
 | `run_console()` | Interactive terminal-based quiz          |
-| `run_gui()`     | Tkinter window-based quiz                |
 
 ---
 
