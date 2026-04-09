@@ -1,12 +1,15 @@
 """Module containing the MathQuestion class for the Mental Math Trainer."""
 
+import random
+
 
 class MathQuestion:
     """Represents a single arithmetic question with progressive difficulty.
 
-    The question is generated based on its index (0-9), cycling through
-    addition, subtraction, and multiplication operations.  Numbers grow
-    progressively: num1 = (index + 1) * 10, num2 = (index + 1) * 5.
+    The question is generated randomly based on its index (0-9).  Operands
+    are drawn from ranges that grow with the index to maintain progressive
+    difficulty, and the operation is chosen at random from addition,
+    subtraction, and multiplication.
     """
 
     OPERATIONS = ['+', '-', '*']
@@ -18,9 +21,9 @@ class MathQuestion:
             index: Zero-based position of the question in the quiz (0–9).
         """
         self.index = index
-        self.num1 = (index + 1) * 10
-        self.num2 = (index + 1) * 5
-        self.operation = self.OPERATIONS[index % len(self.OPERATIONS)]
+        self.num1 = random.randint(10 * (index + 1), 10 * (index + 2))
+        self.num2 = random.randint(5 * (index + 1), 5 * (index + 2))
+        self.operation = random.choice(self.OPERATIONS)
         self.answer = self._calculate_answer()
 
     def _calculate_answer(self) -> int:
