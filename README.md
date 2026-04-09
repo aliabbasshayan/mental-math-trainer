@@ -116,7 +116,7 @@ A Tkinter window opens with:
 
 | Attribute / Method           | Description                                  |
 |------------------------------|----------------------------------------------|
-| `total_questions`            | Always 10                                    |
+| `TOTAL_QUESTIONS`            | Class constant – always 10                   |
 | `questions`                  | List of `MathQuestion` instances             |
 | `current_index`              | Index of the next unanswered question        |
 | `correct_count`              | Running tally of correct answers             |
